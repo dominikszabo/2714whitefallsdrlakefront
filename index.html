@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beautiful 1-story lakefront home in Pearland, TX. Perfect for empty nesters. 1/4 acre lot, private lake access, dog-friendly. Schedule your tour today.">
+    
+    <title>Pearland Lakefront Home | 1-Story Living on the Lake</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #1B3B5A; /* Navy Blue */
+            --secondary-color: #2C5F6E; /* Teal */
+            --accent-color: #F4A460; /* Warm Gold */
+            --light-color: #F8F9FA;
+            --dark-color: #2C3E50;
+            --text-color: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(27, 59, 90, 0.7), rgba(44, 95, 110, 0.7)), 
+                        url('images/front-yard.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-shadow: none;
+        }
+        
+        .hero-cta:hover {
+            background-color: #e5944f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--light-color);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        /* Photo Gallery */
+        .gallery {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(27, 59, 90, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay span {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        /* Virtual Tour Section */
+        .virtual-tour {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .tour-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .tour-video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .tour-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tour-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tour-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .tour-btn.secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tour-btn.secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Neighborhood Section */
+        .neighborhood {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .neighborhood-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .neighborhood-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .neighborhood-list {
+            list-style: none;
+        }
+        
+        .neighborhood-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .neighborhood-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        
+        .neighborhood-map {
+            width: 100%;
+            height: 400px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .contact h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            color: var(--text-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e5944f;
+            transform: translateY(-2px);
+        }
+        
+        /* Open House Banner */
+        .open-house-banner {
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .open-house-banner a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .disclaimer {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 20px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .neighborhood-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .tour-buttons {
+                flex-direction: column;
+            }
+            
+            .tour-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        /* Sticky Contact Bar (Mobile) */
+        .sticky-contact {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            display: none;
+            justify-content: space-around;
+            z-index: 1000;
+        }
+        
+        .sticky-contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .sticky-contact {
+                display: flex;
+            }
+            
+            body {
+                padding-bottom: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Open House Banner (Remove if not applicable) -->
+    <div class="open-house-banner">
+        🏡 Open House This Weekend! Saturday & Sunday 1-4 PM | <a href="#contact">RSVP Now</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Downsize Your Home, Not Your Lifestyle</h1>
+            <p>Beautiful 1-Story Lakefront Home in Pearland, TX | Perfect for Empty Nesters</p>
+            <a href="#contact" class="hero-cta">Schedule Your Private Tour</a>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why You'll Love This Home</h2>
+                <p>Designed for comfortable single-level living with the lifestyle you deserve</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>1-Story Living</h3>
+                    <p>No stairs to climb. Easy access throughout. Perfect for aging in place.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌊</div>
+                    <h3>Private Lake Access</h3>
+                    <p>Wake up to water views. Enjoy morning coffee overlooking the lake.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌳</div>
+                    <h3>1/4 Acre Lot</h3>
+                    <p>Oversized fenced yard. Perfect for dogs, gardening, or outdoor entertaining.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🐕</div>
+                    <h3>Dog-Friendly</h3>
+                    <p>No pet restrictions. Large yard for play. Lake walks for adventures.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Pearland Location</h3>
+                    <p>Top-rated schools. Low crime. Close to Houston Medical Center & airports.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Lower Property Taxes</h3>
+                    <p>Save compared to Houston Inner Loop. More money for what matters.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❄️</div>
+                    <h3>Recent Roof & AC</h3>
+                    <p>1-year-old roof with warranty and 3-year-old AC system keep your maintenance worries low.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>12-Foot Ceilings</h3>
+                    <p>Soaring ceilings with recessed lighting in living area. Open, airy feel with modern elegance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Photo Gallery</h2>
+                <p>See why this home is special</p>
+            </div>
+            <div class="gallery-grid">
+                <!-- Replace with actual photos -->
+                <div class="gallery-item">
+                    <img src="images/lake-view.jpeg" alt="Lake view from backyard">
+                    <div class="gallery-overlay">
+                        <span>Lake View</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/lakefront-backyard.jpeg" alt="Backyard with outdoor furniture">
+                    <div class="gallery-overlay">
+                        <span>Backyard</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/living-room-high-ceiling.jpeg" alt="Open living room with 12-foot ceilings">
+                    <div class="gallery-overlay">
+                        <span>Living Room - 12ft Ceilings</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/kitchen.jpeg" alt="Updated kitchen">
+                    <div class="gallery-overlay">
+                        <span>Kitchen</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/master-bedroom.jpeg" alt="Master bedroom">
+                    <div class="gallery-overlay">
+                        <span>Master Bedroom</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/entrance.jpeg" alt="Home exterior">
+                    <div class="gallery-overlay">
+                        <span>Entrance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour Section -->
+    <section class="virtual-tour">
+        <div class="container tour-container">
+            <div class="section-title">
+                <h2>Virtual Tour</h2>
+                <p>Can't visit in person? Tour from anywhere</p>
+            </div>
+            <div class="tour-video">
+                <!-- Embed YouTube or Matterport tour here -->
+                <iframe width="100%" height="100%" 
+                    src="https://www.youtube.com/embed/flJCtlQzDic?si=0fW9z81XHwFfFQif" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="tour-buttons">
+                <a href="#" class="tour-btn">🎥 Watch Video Tour</a>
+                <a href="#contact" class="tour-btn secondary">📅 Schedule Live Virtual Tour</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Neighborhood Section -->
+    <section class="neighborhood">
+        <div class="container">
+            <div class="neighborhood-content">
+                <div class="neighborhood-info">
+                    <h3>About Pearland</h3>
+                    <p>Pearland is one of Houston's most desirable suburbs, known for excellent schools, low crime, and a strong sense of community.</p>
+                    <ul class="neighborhood-list">
+                        <li>Top-Rated Pearland ISD Schools</li>
+                        <li>Low Crime Rate (Safer than 70% of US Cities)</li>
+                        <li>Close to Houston Medical Center (20 minutes)</li>
+                        <li>30 Minutes to IAH & HOU Airports</li>
+                        <li>Multiple Shopping & Dining Options</li>
+                        <li>Parks, Trails, and Recreation</li>
+                        <li>Growing Community with New Amenities</li>
+                        <li>No State Income Tax (Texas)</li>
+                    </ul>
+                </div>
+                <div class="neighborhood-map">
+                    <!-- Embed Google Map here -->
+                    <iframe 
+                        src="https://www.google.com/maps?q=2714+White+Falls+Drive,+Pearland,+TX&output=embed&z=15" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Schedule Your Tour</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Ready to see this home in person? We'd love to show you around.</p>
+                    <p><strong>📍 Address:</strong> [Your Street Address], Pearland, TX 77584</p>
+                    <p><strong>🕐 Showing Hours:</strong> Daily 9 AM - 7 PM (By Appointment)</p>
+                    <p><strong>🏡 Open House:</strong> Saturday 12-2 PM</p>
+                    
+                    <h3 style="margin-top: 30px;">Quick Facts</h3>
+                    <p><strong>Price:</strong> $450,000</p>
+                    <p><strong>Bedrooms:</strong> 3</p>
+                    <p><strong>Bathrooms:</strong> 2</p>
+                    <p><strong>Square Feet:</strong> 2,320</p>
+                    <p><strong>Lot Size:</strong> 1/4 Acre</p>
+                    <p><strong>Year Built:</strong> 2004 </p>
+                    <p><strong>Roof:</strong> 1 year old with warranty</p>
+                    <p><strong>AC:</strong> 3 years old</p>
+                    <p><strong>HOA:</strong> $1,163 </p>
+                    <p><strong>Taxes:</strong> $9,434 (w/o Exemption) </p>
+                </div>
+                <div class="contact-form">
+                    <form id="tour-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tour-type">Preferred Tour Type *</label>
+                            <select id="tour-type" name="tour-type" required>
+                                <option value="">Select an option</option>
+                                <option value="in-person">In-Person Tour</option>
+                                <option value="virtual">Virtual Tour (Video Call)</option>
+                                <option value="open-house">Open House (Sat-Sun 1-4 PM)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message (Optional)</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your timeline, any questions, or special requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Request Tour</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><strong>[Your Name] | [Your Realtor Name]</strong></p>
+            <p>[Brokerage Name] | License #[Your License Number]</p>
+            <p><a href="tel:+15551234567">(555) 123-4567</a> | <a href="mailto:info@pearlandlakefronthome.com">info@pearlandlakefronthome.com</a></p>
+            <p class="disclaimer">
+                Equal Housing Opportunity. All information deemed reliable but not guaranteed.
+                Buyers should verify all information independently. Property subject to prior sale.
+                <br>
+                Broker of Record: Central Metro Realty.
+                <br>
+                <a href="/Dominik-Szabo-Information-About-Brokerage-Services.pdf" target="_blank" rel="noopener">Dominik-Szabo Information About Brokerage Services</a>
+            </p>
+            <p class="disclaimer" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+                <img src="https://centralmetro.net/wp-content/uploads/2018/07/CM-Logo-5-18.png" alt="Central Metro Realty" style="max-height:40px; width:auto; display:block;">
+                <span>Central Metro Realty</span>
+            </p>
+            <p class="disclaimer">
+                © 2026 dominikrealtor . All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Sticky Contact Bar (Mobile Only) -->
+    <div class="sticky-contact">
+        <a href="tel:+1.832.844.1724">📞 Call</a>
+        <a href="#contact">📅 Schedule Tour</a>
+        <a href="mailto:sold@dominikrealtor.com">✉️ Email</a>
+    </div>
+
+    <!-- Form Submission Script -->
+    <script>
+        document.getElementById('tour-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send to your backend or email service
+            // For now, we'll just show a success message
+            
+            alert('Thank you for your interest! We will contact you within 2 hours to schedule your tour.');
+            
+            // Reset form
+            this.reset();
+            
+            // In production, replace with actual form submission:
+            // fetch('/submit-tour-request', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(data)
+            // });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Track page views (add Google Analytics or similar)
+        // gtag('event', 'page_view', {
+        //     page_title: 'Pearland Lakefront Home',
+        //     page_location: window.location.href
+        // });
+    </script>
+</body>
+</html>
