@@ -717,6 +717,12 @@
                 </div>
                 <div class="contact-form">
                     <form id="tour-form">
+                        <!-- Hidden fields mapped to Google Form entry IDs -->
+                        <input type="hidden" name="entry.2005620554" id="entry-name">
+                        <input type="hidden" name="entry.1045781291" id="entry-email">
+                        <input type="hidden" name="entry.1166974658" id="entry-phone">
+                        <input type="hidden" name="entry.839337160" id="entry-request">
+
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -735,7 +741,7 @@
                                 <option value="">Select an option</option>
                                 <option value="in-person">In-Person Tour</option>
                                 <option value="virtual">Virtual Tour (Video Call)</option>
-                                <option value="open-house">Open House (Sat-Sun 1-4 PM)</option>
+                                <option value="open-house">Open House (Sun 12-2 PM)</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -793,20 +799,53 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // Here you would typically send to your backend or email service
-            // For now, we'll just show a success message
+            // Map to Google Form entry IDs
+            document.getElementById('entry-name').value = data.name;
+            document.getElementById('entry-email').value = data.email;
+            document.getElementById('entry-phone').value = data.phone;
             
-            alert('Thank you for your interest! We will contact you within 2 hours to schedule your tour.');
+            // Build client request summary combining tour-type, date, and message
+            let request = '';
+            if (data['tour-type']) {
+                const tourLabels = {
+                    'in-person': 'In-Person Tour',
+                    'virtual': 'Virtual Tour (Video Call)',
+                    'open-house': 'Open House (Sun 12-2 PM)'
+                };
+                request += 'Tour Type: ' + (tourLabels[data['tour-type']] || data['tour-type']) + '\n';
+            }
+            if (data.date) {
+                request += 'Preferred Date: ' + data.date + '\n';
+            }
+            if (data.message) {
+                request += 'Message: ' + data.message;
+            }
+            document.getElementById('entry-request').value = request.trim();
             
-            // Reset form
-            this.reset();
+            // Submit to Google Form
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
             
-            // In production, replace with actual form submission:
-            // fetch('/submit-tour-request', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(data)
-            // });
+            fetch('https://docs.google.com/forms/d/e/1FAIpQLSdFEUf4u5hOriK0ljlJ_fJumRKcN4rOwVQnqgVMH89n4d-_9A/formResponse', {
+                method: 'POST',
+                mode: 'no-cors',
+                body: new URLSearchParams({
+                    'entry.2005620554': data.name,
+                    'entry.1045781291': data.email,
+                    'entry.1166974658': data.phone,
+                    'entry.839337160': request.trim()
+                })
+            }).then(() => {
+                alert('Thank you for your interest! We will contact you within 2 hours to schedule your tour.');
+                this.reset();
+            }).catch(() => {
+                alert('Thank you for your interest! We will contact you within 2 hours to schedule your tour.');
+                this.reset();
+            }).finally(() => {
+                submitBtn.textContent = 'Request Tour';
+                submitBtn.disabled = false;
+            });
         });
         
         // Smooth scroll for anchor links
